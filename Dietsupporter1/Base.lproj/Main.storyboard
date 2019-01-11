@@ -267,7 +267,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9OH-hL-8ma">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimerCell" id="9OH-hL-8ma">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9OH-hL-8ma" id="CC1-Ts-lMY">
@@ -276,6 +276,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QYL-WH-jCc" id="J4p-GX-JOn"/>
+                                    <outlet property="delegate" destination="QYL-WH-jCc" id="CzH-8q-rr7"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sso-x5-2ik">
                                 <rect key="frame" x="10" y="464" width="139" height="33"/>
@@ -302,7 +306,7 @@
                         <viewLayoutGuide key="safeArea" id="GPZ-Go-K4S"/>
                     </view>
                     <connections>
-                        <outlet property="tableView_timer" destination="W6W-Aw-89V" id="fZl-OU-Mkg"/>
+                        <outlet property="tableView_timer" destination="W6W-Aw-89V" id="hDB-dg-uXr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1P-cJ-aQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
