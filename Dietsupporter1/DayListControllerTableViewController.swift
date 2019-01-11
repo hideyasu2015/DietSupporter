@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import CoreData
+
 class DayListControllerTableViewController: UIViewController {
+    
+    // PlanListControllerからの画面遷移時にデータを持ってくる
+    var coredataPlan: Plans?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     @IBOutlet weak var tableView_day: UITableView!
