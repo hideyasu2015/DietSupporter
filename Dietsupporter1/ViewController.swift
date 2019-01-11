@@ -18,6 +18,20 @@ class ViewController: UIViewController {
     @IBAction func unwindToTop(segue: UIStoryboardSegue){
         
     }
-
+    
+    @IBAction func btn_BasicData(_ sender: Any) {
+    }
+    
+    @IBAction func btn_FoodManagement(_ sender: Any) {
+    }
+    
+    @IBAction func btn_Timer(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
 }
 

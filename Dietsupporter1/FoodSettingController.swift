@@ -12,4 +12,34 @@ class FoodSettingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func textField_name(_ sender: Any) {
+    }
+    
+    @IBAction func textField_per(_ sender: Any) {
+    }
+    
+    @IBAction func textField_cal(_ sender: Any) {
+    }
+    
+    @IBAction func textField_carbo(_ sender: Any) {
+    }
+    
+    @IBAction func textField_fat(_ sender: Any) {
+    }
+    
+    @IBAction func textField_protain(_ sender: Any) {
+    }
+    
+    @IBAction func textField_intake(_ sender: Any) {
+    }
+    
+    @IBAction func btn_registration(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
 }

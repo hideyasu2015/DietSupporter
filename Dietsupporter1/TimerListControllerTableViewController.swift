@@ -13,6 +13,19 @@ class TimerListControllerTableViewController: UIViewController {
         super.viewDidLoad()
     }
     @IBAction func unwindToTimerListController(segue: UIStoryboardSegue){
-        
     }
+    
+    @IBOutlet weak var tableView_timer: UITableView!
+    
+    @IBAction func btn_edit(_ sender: Any) {
+    }
+    
+    @IBAction func btn_add_timer(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
 }

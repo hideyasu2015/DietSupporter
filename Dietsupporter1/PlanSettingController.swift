@@ -13,4 +13,18 @@ class PlanSettingController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    @IBAction func textField_name(_ sender: Any) {
+    }
+    
+    @IBAction func textField_dietPeriod(_ sender: Any) {
+    }
+    
+    @IBAction func btn_registration(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
 }

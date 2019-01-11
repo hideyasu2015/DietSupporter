@@ -17,4 +17,38 @@ class FoodListControllerTableViewController: UIViewController {
     @IBAction func unwindToFoodListController(segue: UIStoryboardSegue){
     }
     
+    @IBOutlet weak var tableView_food: UITableView!
+    
+    @IBAction func btn_edit(_ sender: Any) {
+    }
+    
+    @IBAction func btn_add_food(_ sender: Any) {
+    }
+    
+    @IBOutlet weak var label_cal: UILabel!
+    
+    @IBOutlet weak var label_carbo: UILabel!
+    
+    @IBOutlet weak var label_fat: UILabel!
+    
+    @IBOutlet weak var label_protain: UILabel!
+    
+    @IBOutlet weak var label_total_cal: UILabel!
+    
+    @IBAction func btn_top(_ sender: Any) {
+    }
+    
+    @IBAction func btn_plan(_ sender: Any) {
+    }
+    
+    @IBAction func btn_day(_ sender: Any) {
+    }
+    
+    @IBAction func btn_food(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
 }

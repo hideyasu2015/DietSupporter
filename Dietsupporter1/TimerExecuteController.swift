@@ -12,4 +12,21 @@ class TimerExecuteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBOutlet weak var textLabel_time: UILabel!
+    
+    @IBOutlet weak var textLabel_set: UILabel!
+    
+    @IBAction func btn_start(_ sender: Any) {
+    }
+    
+    @IBAction func btn_stop(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
+    
 }

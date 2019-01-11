@@ -28,7 +28,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="食事管理"/>
                                 <connections>
-                                    <segue destination="Khu-A7-gTY" kind="show" id="YA8-Ow-KmU"/>
+                                    <action selector="btn_FoodManagement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mBj-yj-f4P"/>
+                                    <segue destination="GvO-XN-wpl" kind="show" id="4Ux-oR-jza"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46C-4h-lcz">
@@ -41,6 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="タイマー"/>
                                 <connections>
+                                    <action selector="btn_Timer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIl-Ly-Ocm"/>
                                     <segue destination="QYL-WH-jCc" kind="show" id="Etu-f7-Ez4"/>
                                 </connections>
                             </button>
@@ -63,7 +65,7 @@
                                     <navigationItem title="DietSuppoter" id="xwh-wp-McE">
                                         <barButtonItem key="rightBarButtonItem" title="基本情報" id="dnP-Ts-3G3">
                                             <connections>
-                                                <action selector="btn_edit:" destination="Khu-A7-gTY" id="7Xo-wK-m9n"/>
+                                                <action selector="btn_BasicData:" destination="BYZ-38-t0r" id="iSR-7U-85M"/>
                                                 <segue destination="t53-A8-0e5" kind="show" id="uVk-4h-WiH"/>
                                             </connections>
                                         </barButtonItem>
@@ -145,6 +147,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textlabel_name:" destination="fxv-D4-J7V" eventType="editingDidEnd" id="zdx-2J-4tc"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-hB-xM0">
                                 <rect key="frame" x="217.5" y="218.5" width="100" height="30"/>
@@ -154,6 +159,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textLabel_exerciseTime:" destination="fxv-D4-J7V" eventType="editingDidEnd" id="EK0-EG-WHn"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HHU-oN-ydz">
                                 <rect key="frame" x="217.5" y="288.5" width="100" height="30"/>
@@ -163,6 +171,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_breakTime:" destination="fxv-D4-J7V" eventType="editingDidEnd" id="6W4-gE-sMa"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JwV-lJ-0d9">
                                 <rect key="frame" x="217.5" y="358.5" width="100" height="30"/>
@@ -172,6 +183,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_set:" destination="fxv-D4-J7V" eventType="editingDidEnd" id="TdH-9z-za1"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEd-6b-c36">
                                 <rect key="frame" x="137.5" y="448.5" width="100" height="50"/>
@@ -184,6 +198,9 @@
                                 <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_registration:" destination="fxv-D4-J7V" eventType="touchUpInside" id="Shj-vx-0RS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,13 +250,21 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="タイマー" id="6On-1S-Vov">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="fNP-b8-DV7"/>
-                                        <barButtonItem key="rightBarButtonItem" title="編集" id="gCZ-7o-Xa3"/>
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="fNP-b8-DV7">
+                                            <connections>
+                                                <segue destination="88Z-4B-UCn" kind="unwind" unwindAction="unwindToTopWithSegue:" id="XNG-tk-slN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="編集" id="gCZ-7o-Xa3">
+                                            <connections>
+                                                <action selector="btn_edit:" destination="QYL-WH-jCc" id="Dez-aV-tNj"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W6W-Aw-89V">
-                                <rect key="frame" x="0.0" y="64" width="375" height="376"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W6W-Aw-89V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9OH-hL-8ma">
@@ -252,11 +277,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sso-x5-2ik">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sso-x5-2ik">
                                 <rect key="frame" x="10" y="464" width="139" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="＋タイマーを追加"/>
                                 <connections>
+                                    <action selector="btn_add_timer:" destination="QYL-WH-jCc" eventType="touchUpInside" id="UnP-CC-Ona"/>
                                     <segue destination="fxv-D4-J7V" kind="show" id="RxM-f5-dVJ"/>
                                 </connections>
                             </button>
@@ -265,6 +291,7 @@
                         <constraints>
                             <constraint firstItem="W6W-Aw-89V" firstAttribute="leading" secondItem="GPZ-Go-K4S" secondAttribute="leading" id="1ru-P1-dEd"/>
                             <constraint firstItem="jKz-qw-fVw" firstAttribute="top" secondItem="GPZ-Go-K4S" secondAttribute="top" id="Gem-5N-3jc"/>
+                            <constraint firstItem="GPZ-Go-K4S" firstAttribute="bottom" secondItem="sso-x5-2ik" secondAttribute="bottom" constant="170" id="Svd-jn-DGE"/>
                             <constraint firstItem="jKz-qw-fVw" firstAttribute="leading" secondItem="GPZ-Go-K4S" secondAttribute="leading" id="XjN-9b-2ib"/>
                             <constraint firstItem="jKz-qw-fVw" firstAttribute="trailing" secondItem="GPZ-Go-K4S" secondAttribute="trailing" id="eyh-Od-oHh"/>
                             <constraint firstItem="W6W-Aw-89V" firstAttribute="trailing" secondItem="GPZ-Go-K4S" secondAttribute="trailing" id="oOf-BV-r38"/>
@@ -274,8 +301,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GPZ-Go-K4S"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView_timer" destination="W6W-Aw-89V" id="fZl-OU-Mkg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1P-cJ-aQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="88Z-4B-UCn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-647.20000000000005" y="133.5832083958021"/>
         </scene>
@@ -331,6 +362,9 @@
                                 <state key="normal" title="start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_start:" destination="IS1-Vc-2K6" eventType="touchUpInside" id="dtW-zL-G5P"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2c-0A-2Hf">
                                 <rect key="frame" x="202.5" y="468.5" width="130" height="90"/>
@@ -343,6 +377,9 @@
                                 <state key="normal" title="stop">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_stop:" destination="IS1-Vc-2K6" eventType="touchUpInside" id="yjb-OR-ZVi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXl-If-Xyl">
                                 <rect key="frame" x="113.5" y="177.5" width="148.5" height="72"/>
@@ -371,6 +408,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mzb-wY-cqt"/>
                     </view>
+                    <connections>
+                        <outlet property="textLabel_set" destination="RDX-Gv-cYW" id="DFL-Va-RCr"/>
+                        <outlet property="textLabel_time" destination="TXl-If-Xyl" id="Swj-xA-dRN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfa-E0-Erd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rzk-XL-jX0" userLabel="Exit" sceneMemberID="exit"/>
@@ -394,7 +435,7 @@
                                     <navigationItem title="プラン設定" id="Fqs-fY-N4S">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="H2T-Lq-8ti">
                                             <connections>
-                                                <segue destination="Khl-uL-JgD" kind="unwind" unwindAction="unwindToPlanListControllerWithSegue:" id="Dce-Hp-aEW"/>
+                                                <segue destination="Khl-uL-JgD" kind="unwind" unwindAction="unwindToPlanListControllerWithSegue:" id="Jaw-7F-pYA"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -414,6 +455,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_name:" destination="LRi-tU-7Ok" eventType="editingDidEnd" id="MpT-U8-MR1"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ダイエット期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt5-F6-xLC">
                                 <rect key="frame" x="38" y="286" width="122" height="21"/>
@@ -429,6 +473,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_dietPeriod:" destination="LRi-tU-7Ok" eventType="editingDidEnd" id="I2T-go-mbM"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld7-FX-U8z">
                                 <rect key="frame" x="137.5" y="368.5" width="100" height="50"/>
@@ -443,6 +490,9 @@
                                 <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_registration:" destination="LRi-tU-7Ok" eventType="touchUpInside" id="k0D-0A-ajF"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたのダイエットの設定期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCv-4Q-Bld">
                                 <rect key="frame" x="66" y="203" width="243" height="21"/>
@@ -476,6 +526,114 @@
                 <exit id="Khl-uL-JgD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="881" y="887"/>
+        </scene>
+        <!--Plan List Controller Table View Controller-->
+        <scene sceneID="Nnp-mg-evz">
+            <objects>
+                <viewController id="GvO-XN-wpl" customClass="PlanListControllerTableViewController" customModule="Dietsupporter1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9mb-cx-0LK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XbM-S5-MmK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="489"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Mak-lA-ra0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mak-lA-ra0" id="y2s-VN-QSN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiP-za-f05">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gTe-Jz-BWj"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Top" id="IFA-oW-bFr">
+                                        <connections>
+                                            <action selector="btn_top:" destination="GvO-XN-wpl" id="Cs1-BT-avb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="77m-9C-yOh"/>
+                                    <barButtonItem title="プラン" id="qDV-dz-XwV">
+                                        <connections>
+                                            <action selector="btn_plan:" destination="GvO-XN-wpl" id="Myl-nY-lVE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KYZ-8U-bf7"/>
+                                    <barButtonItem title="日にち" id="pD1-8H-S6a">
+                                        <connections>
+                                            <action selector="btn_day:" destination="GvO-XN-wpl" id="9PH-HS-MzD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7mP-g0-w4j"/>
+                                    <barButtonItem title="食品" id="6U7-Lt-ySf">
+                                        <connections>
+                                            <action selector="btn_food:" destination="GvO-XN-wpl" id="rIp-TQ-txu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjp-uh-5pF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2M9-63-UGX"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="プラン" id="XVZ-6Y-p0c">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="Xah-cG-wKt">
+                                            <connections>
+                                                <segue destination="Km2-X1-fOm" kind="unwind" unwindAction="unwindToTopWithSegue:" id="CeT-Mg-RCM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="編集" id="6C8-pn-sGy">
+                                            <connections>
+                                                <action selector="btn_edit:" destination="GvO-XN-wpl" id="goA-DO-VUy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gg-o5-keU">
+                                <rect key="frame" x="10" y="563" width="122" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="＋プランを追加"/>
+                                <connections>
+                                    <segue destination="LRi-tU-7Ok" kind="show" id="qfy-EE-hUu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XbM-S5-MmK" firstAttribute="leading" secondItem="iNx-lw-2LQ" secondAttribute="leading" id="0fh-84-K4P"/>
+                            <constraint firstItem="XbM-S5-MmK" firstAttribute="top" secondItem="cjp-uh-5pF" secondAttribute="bottom" id="2eR-Lh-gKU"/>
+                            <constraint firstItem="XbM-S5-MmK" firstAttribute="trailing" secondItem="iNx-lw-2LQ" secondAttribute="trailing" id="4ru-cG-dfI"/>
+                            <constraint firstItem="cjp-uh-5pF" firstAttribute="leading" secondItem="iNx-lw-2LQ" secondAttribute="leading" id="Dx5-dT-zUL"/>
+                            <constraint firstItem="cjp-uh-5pF" firstAttribute="trailing" secondItem="iNx-lw-2LQ" secondAttribute="trailing" id="OIQ-s3-TIO"/>
+                            <constraint firstItem="TiP-za-f05" firstAttribute="leading" secondItem="iNx-lw-2LQ" secondAttribute="leading" id="Rme-qs-yRz"/>
+                            <constraint firstItem="TiP-za-f05" firstAttribute="bottom" secondItem="iNx-lw-2LQ" secondAttribute="bottom" id="Vi7-zI-qNo"/>
+                            <constraint firstItem="TiP-za-f05" firstAttribute="trailing" secondItem="iNx-lw-2LQ" secondAttribute="trailing" id="WtD-wP-Onn"/>
+                            <constraint firstItem="2gg-o5-keU" firstAttribute="top" secondItem="XbM-S5-MmK" secondAttribute="bottom" constant="10" id="b02-ur-1uI"/>
+                            <constraint firstItem="2gg-o5-keU" firstAttribute="leading" secondItem="iNx-lw-2LQ" secondAttribute="leading" constant="10" id="fOf-yI-4CP"/>
+                            <constraint firstItem="TiP-za-f05" firstAttribute="top" secondItem="2gg-o5-keU" secondAttribute="bottom" constant="27" id="mCM-wR-jgs"/>
+                            <constraint firstItem="cjp-uh-5pF" firstAttribute="top" secondItem="iNx-lw-2LQ" secondAttribute="top" id="mIw-Uw-h2Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iNx-lw-2LQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView_plan" destination="XbM-S5-MmK" id="7r0-2n-3ys"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1gI-mf-zvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Km2-X1-fOm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="880.79999999999995" y="134.48275862068968"/>
         </scene>
         <!--Basic Data Controller-->
         <scene sceneID="fry-dB-arP">
@@ -538,6 +696,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="taxtLabel_sex:" destination="t53-A8-0e5" eventType="editingDidEnd" id="aSq-E2-HJQ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnR-BI-Jyr">
                                 <rect key="frame" x="207.5" y="193.5" width="100" height="30"/>
@@ -547,6 +708,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textLabel_height:" destination="t53-A8-0e5" eventType="editingDidEnd" id="gZK-XK-5JY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCr-qp-lOA">
                                 <rect key="frame" x="207.5" y="233.5" width="100" height="30"/>
@@ -556,6 +720,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textLabel_weight:" destination="t53-A8-0e5" eventType="editingDidEnd" id="9eg-FO-sia"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHu-I4-qWF">
                                 <rect key="frame" x="207.5" y="273.5" width="100" height="30"/>
@@ -565,6 +732,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textLabel_age:" destination="t53-A8-0e5" eventType="editingDidEnd" id="8sq-Zt-tAR"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活動レベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-WU-W0C">
                                 <rect key="frame" x="34" y="318" width="87" height="21"/>
@@ -575,6 +745,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEV-hi-IOR">
                                 <rect key="frame" x="16" y="353.5" width="123" height="30"/>
                                 <state key="normal" title="活動レベルとは？"/>
+                                <connections>
+                                    <action selector="btn_explanation:" destination="t53-A8-0e5" eventType="touchUpInside" id="xaI-KW-HVf"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRN-26-XYY">
                                 <rect key="frame" x="207.5" y="313.5" width="100" height="30"/>
@@ -584,6 +757,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textLabel_activityLevel:" destination="t53-A8-0e5" eventType="editingDidEnd" id="xyb-b4-gNP"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZM-0D-6AB">
                                 <rect key="frame" x="137.5" y="428.5" width="100" height="50"/>
@@ -596,6 +772,9 @@
                                 <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_registration:" destination="t53-A8-0e5" eventType="touchUpInside" id="but-CP-ncc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -654,7 +833,11 @@
                                 <items>
                                     <navigationItem title="○日目" id="GZa-kC-Vm5">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="6WB-k5-0aV"/>
-                                        <barButtonItem key="rightBarButtonItem" title="編集" id="Yoh-Q1-8Li"/>
+                                        <barButtonItem key="rightBarButtonItem" title="編集" id="Yoh-Q1-8Li">
+                                            <connections>
+                                                <action selector="btn_edit:" destination="EPV-bf-UM0" id="myJ-xt-lNL"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -662,16 +845,32 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Top" id="bDH-3Z-oCK"/>
+                                    <barButtonItem title="Top" id="bDH-3Z-oCK">
+                                        <connections>
+                                            <action selector="btn_top:" destination="EPV-bf-UM0" id="bif-Ae-Eb4"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MmQ-3I-ili"/>
-                                    <barButtonItem title="プラン" id="24F-dS-gfA"/>
+                                    <barButtonItem title="プラン" id="24F-dS-gfA">
+                                        <connections>
+                                            <action selector="btn_plan:" destination="EPV-bf-UM0" id="U6K-Vf-jDD"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="q1E-Ty-rzb"/>
-                                    <barButtonItem title="日にち" id="VSA-zV-AMb"/>
+                                    <barButtonItem title="日にち" id="VSA-zV-AMb">
+                                        <connections>
+                                            <action selector="btn_day:" destination="EPV-bf-UM0" id="jYB-h4-HdJ"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dxn-Mh-UAj"/>
-                                    <barButtonItem title="食品" id="8ZQ-It-rLv"/>
+                                    <barButtonItem title="食品" id="8ZQ-It-rLv">
+                                        <connections>
+                                            <action selector="btn_food:" destination="EPV-bf-UM0" id="Ypd-Q5-Bhl"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-pE-fcr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-pE-fcr">
                                 <rect key="frame" x="0.0" y="64" width="375" height="209"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -685,11 +884,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-gn-AGe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-gn-AGe">
                                 <rect key="frame" x="10" y="283" width="104" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="＋食品を追加"/>
                                 <connections>
+                                    <action selector="btn_add_food:" destination="EPV-bf-UM0" eventType="touchUpInside" id="CS8-AH-R9K"/>
                                     <segue destination="5xk-xS-4f6" kind="show" id="A4E-GD-vNa"/>
                                 </connections>
                             </button>
@@ -778,7 +978,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raB-Um-7vI">
-                                <rect key="frame" x="165.5" y="563" width="44" height="21"/>
+                                <rect key="frame" x="166" y="563" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -798,6 +998,7 @@
                             <constraint firstItem="H72-RN-S0C" firstAttribute="centerY" secondItem="4Fq-gj-9sV" secondAttribute="centerY" constant="60" id="6Z8-TK-tWQ"/>
                             <constraint firstItem="JTp-L2-afv" firstAttribute="centerX" secondItem="4Fq-gj-9sV" secondAttribute="centerX" id="6oX-mJ-JCc"/>
                             <constraint firstItem="eoM-Wa-jiR" firstAttribute="centerX" secondItem="4Fq-gj-9sV" secondAttribute="centerX" constant="30" id="7Oc-XK-S1Z"/>
+                            <constraint firstItem="kix-Ut-rG5" firstAttribute="top" secondItem="Gcf-gn-AGe" secondAttribute="bottom" constant="37" id="ABX-Uq-Q1v"/>
                             <constraint firstItem="r3u-TY-Qyv" firstAttribute="centerY" secondItem="4Fq-gj-9sV" secondAttribute="centerY" constant="240" id="BBi-an-e6x"/>
                             <constraint firstItem="PAy-pE-fcr" firstAttribute="top" secondItem="xmI-kW-u0A" secondAttribute="bottom" id="BK9-uN-nn1"/>
                             <constraint firstItem="xmI-kW-u0A" firstAttribute="top" secondItem="Uig-Pn-wNi" secondAttribute="top" id="BaP-fp-MS7"/>
@@ -835,6 +1036,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uig-Pn-wNi"/>
                     </view>
+                    <connections>
+                        <outlet property="label_cal" destination="b3M-cP-CS8" id="Wml-dz-kWu"/>
+                        <outlet property="label_carbo" destination="eoM-Wa-jiR" id="hYA-7m-l4A"/>
+                        <outlet property="label_fat" destination="O7Q-tH-Ek3" id="Ajg-NY-H6E"/>
+                        <outlet property="label_protain" destination="U0R-Ra-b0R" id="6Yj-US-966"/>
+                        <outlet property="label_total_cal" destination="raB-Um-7vI" id="CkJ-YN-HP0"/>
+                        <outlet property="tableView_food" destination="PAy-pE-fcr" id="8dR-ok-T3Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Un0-tf-9wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -877,6 +1086,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_name:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="tbH-n1-bDB"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35e-LS-93S">
                                 <rect key="frame" x="27.5" y="128.5" width="100" height="30"/>
@@ -886,6 +1098,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_per:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="kN2-Fe-DGp"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="g当たり" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBE-fD-JFc">
                                 <rect key="frame" x="156.5" y="133" width="62" height="21"/>
@@ -931,6 +1146,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_cal:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="jXq-8o-TQV"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmW-MN-q2j">
                                 <rect key="frame" x="157.5" y="238.5" width="100" height="30"/>
@@ -940,6 +1158,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_carbo:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="Tjo-oB-15e"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-BG-vDJ">
                                 <rect key="frame" x="157.5" y="278.5" width="100" height="30"/>
@@ -949,6 +1170,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_fat:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="W3d-Qq-Qwn"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATV-3b-hKn">
                                 <rect key="frame" x="157.5" y="318.5" width="100" height="30"/>
@@ -958,6 +1182,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_protain:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="e7c-Qy-fGH"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTU-Zs-CWO">
                                 <rect key="frame" x="157.5" y="358.5" width="100" height="30"/>
@@ -967,6 +1194,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField_intake:" destination="5xk-xS-4f6" eventType="editingDidEnd" id="cdw-IV-FOc"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGJ-Gz-jZI">
                                 <rect key="frame" x="282" y="203" width="31" height="21"/>
@@ -1009,6 +1239,9 @@
                                 <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_registration:" destination="5xk-xS-4f6" eventType="touchUpInside" id="8nH-FT-w2c"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1065,104 +1298,6 @@
             </objects>
             <point key="canvasLocation" x="2336.8000000000002" y="821.73913043478262"/>
         </scene>
-        <!--Plan List Controller Table View Controller-->
-        <scene sceneID="kfi-iN-2vM">
-            <objects>
-                <viewController id="Khu-A7-gTY" customClass="PlanListControllerTableViewController" customModule="Dietsupporter1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aAZ-kJ-nRK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsE-xU-2KN">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="qmC-Bb-iAp"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="プラン" id="wR4-Uh-lvg">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="CRX-nV-SHw">
-                                            <connections>
-                                                <segue destination="Z6f-S1-fcs" kind="unwind" unwindAction="unwindToTopWithSegue:" id="AwQ-NT-GeP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="編集" id="4D1-LH-oJi">
-                                            <connections>
-                                                <action selector="btn_edit:" destination="Khu-A7-gTY" id="LY8-Ge-ZeL"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-rs-7Q8">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="EWV-7S-fcD"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Top" id="KwH-18-iev">
-                                        <connections>
-                                            <action selector="btn_top:" destination="Khu-A7-gTY" id="Dzx-8g-Pwf"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="h2p-Uq-dDG"/>
-                                    <barButtonItem title="プラン" id="KGW-hg-OMV">
-                                        <connections>
-                                            <action selector="btn_plan:" destination="Khu-A7-gTY" id="cDQ-kr-78z"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ten-oe-V4l"/>
-                                    <barButtonItem title="日にち" id="IMB-D5-eHb">
-                                        <connections>
-                                            <action selector="btn_day:" destination="Khu-A7-gTY" id="hnS-5c-Bx4"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mYy-VX-RGG"/>
-                                    <barButtonItem title="食品" id="yu6-Rc-v8h">
-                                        <connections>
-                                            <action selector="btn_food:" destination="Khu-A7-gTY" id="Qqh-us-x7y"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RaX-A8-d1Y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6Pv-mo-gZF">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Pv-mo-gZF" id="Hdd-Mv-tKQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="MsE-xU-2KN" firstAttribute="top" secondItem="dfC-xk-mxx" secondAttribute="top" id="Iuo-HG-It4"/>
-                            <constraint firstItem="Xfe-rs-7Q8" firstAttribute="bottom" secondItem="dfC-xk-mxx" secondAttribute="bottom" id="Lyx-Rm-egg"/>
-                            <constraint firstItem="Xfe-rs-7Q8" firstAttribute="trailing" secondItem="dfC-xk-mxx" secondAttribute="trailing" id="QMD-j9-NHu"/>
-                            <constraint firstItem="MsE-xU-2KN" firstAttribute="leading" secondItem="dfC-xk-mxx" secondAttribute="leading" id="Ucw-8d-tYp"/>
-                            <constraint firstItem="RaX-A8-d1Y" firstAttribute="leading" secondItem="dfC-xk-mxx" secondAttribute="leading" id="a3B-iH-oxn"/>
-                            <constraint firstItem="RaX-A8-d1Y" firstAttribute="trailing" secondItem="dfC-xk-mxx" secondAttribute="trailing" id="efd-e5-QYu"/>
-                            <constraint firstItem="RaX-A8-d1Y" firstAttribute="top" secondItem="MsE-xU-2KN" secondAttribute="bottom" id="enL-hq-2dU"/>
-                            <constraint firstItem="Xfe-rs-7Q8" firstAttribute="top" secondItem="RaX-A8-d1Y" secondAttribute="bottom" id="plC-sN-NaQ"/>
-                            <constraint firstItem="MsE-xU-2KN" firstAttribute="trailing" secondItem="dfC-xk-mxx" secondAttribute="trailing" id="seW-vJ-0qy"/>
-                            <constraint firstItem="Xfe-rs-7Q8" firstAttribute="leading" secondItem="dfC-xk-mxx" secondAttribute="leading" id="yyR-hN-6up"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="dfC-xk-mxx"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="RaX-A8-d1Y" id="dYp-aK-oWo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kcy-Ie-qEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Z6f-S1-fcs" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="860" y="136.28185907046478"/>
-        </scene>
         <!--Day List Controller Table View Controller-->
         <scene sceneID="Pjy-xF-hPy">
             <objects>
@@ -1179,7 +1314,11 @@
                                 <items>
                                     <navigationItem title="日にち" id="0gp-QX-kf2">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="QCk-QM-1v6"/>
-                                        <barButtonItem key="rightBarButtonItem" title="編集" id="GkW-kd-2LS"/>
+                                        <barButtonItem key="rightBarButtonItem" title="編集" id="GkW-kd-2LS">
+                                            <connections>
+                                                <action selector="btn_edit:" destination="K1x-ux-anr" id="nIN-0T-bcu"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1189,17 +1328,33 @@
                                     <constraint firstAttribute="height" constant="44" id="5qc-c1-z4B"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Top" id="e84-HC-d5G"/>
+                                    <barButtonItem title="Top" id="e84-HC-d5G">
+                                        <connections>
+                                            <action selector="btn_top:" destination="K1x-ux-anr" id="mAt-fz-H3K"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Wmz-tF-jMW"/>
-                                    <barButtonItem title="プラン" id="gJn-HT-53i"/>
+                                    <barButtonItem title="プラン" id="gJn-HT-53i">
+                                        <connections>
+                                            <action selector="btn_plan:" destination="K1x-ux-anr" id="c2Q-Ym-FJp"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qwr-Bc-txy"/>
-                                    <barButtonItem title="日にち" id="AtJ-rQ-8Im"/>
+                                    <barButtonItem title="日にち" id="AtJ-rQ-8Im">
+                                        <connections>
+                                            <action selector="btn_day:" destination="K1x-ux-anr" id="SEr-QJ-yl4"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Cag-Ei-ulW"/>
-                                    <barButtonItem title="食品" id="FIM-CQ-0MD"/>
+                                    <barButtonItem title="食品" id="FIM-CQ-0MD">
+                                        <connections>
+                                            <action selector="btn_food:" destination="K1x-ux-anr" id="yyL-Vh-MqZ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e15-iT-3TY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="349"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e15-iT-3TY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pll-JS-g1a">
@@ -1212,10 +1367,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qQ-Uf-gFZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qQ-Uf-gFZ">
                                 <rect key="frame" x="10" y="448" width="129" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="＋1日期間を延長"/>
+                                <connections>
+                                    <action selector="btn_add_day:" destination="K1x-ux-anr" eventType="touchUpInside" id="DWg-bI-xcd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このプランでの現在のカロリー収支は" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIp-0Z-86u">
                                 <rect key="frame" x="0.0" y="493" width="375" height="21"/>
@@ -1253,12 +1411,17 @@
                             <constraint firstItem="9uO-Sx-D93" firstAttribute="leading" secondItem="5dI-aB-gGD" secondAttribute="leading" id="V7E-wA-rrZ"/>
                             <constraint firstItem="6qQ-Uf-gFZ" firstAttribute="top" secondItem="e15-iT-3TY" secondAttribute="bottom" constant="10" id="VMv-Ma-bXw"/>
                             <constraint firstItem="hte-aO-ukD" firstAttribute="centerX" secondItem="M5b-zY-Dfi" secondAttribute="centerX" constant="100" id="abs-jo-q0Y"/>
+                            <constraint firstItem="AIp-0Z-86u" firstAttribute="top" secondItem="6qQ-Uf-gFZ" secondAttribute="bottom" constant="12" id="iHY-6A-Wkp"/>
                             <constraint firstItem="e15-iT-3TY" firstAttribute="trailing" secondItem="5dI-aB-gGD" secondAttribute="trailing" id="jdT-2S-3xh"/>
                             <constraint firstItem="9uO-Sx-D93" firstAttribute="bottom" secondItem="5dI-aB-gGD" secondAttribute="bottom" id="stG-yv-nk6"/>
                             <constraint firstItem="Mgo-sV-Q97" firstAttribute="centerY" secondItem="M5b-zY-Dfi" secondAttribute="centerY" constant="215" id="tNj-LZ-2Ff"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5dI-aB-gGD"/>
                     </view>
+                    <connections>
+                        <outlet property="label_total_cal" destination="Mgo-sV-Q97" id="5EC-fH-Boc"/>
+                        <outlet property="tableView_day" destination="e15-iT-3TY" id="FAT-gA-jtn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlB-wk-GXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

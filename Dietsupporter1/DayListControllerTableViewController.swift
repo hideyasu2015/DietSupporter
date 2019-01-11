@@ -13,4 +13,32 @@ class DayListControllerTableViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    @IBOutlet weak var tableView_day: UITableView!
+    
+    @IBAction func btn_edit(_ sender: Any) {
+    }
+    
+    @IBAction func btn_add_day(_ sender: Any) {
+    }
+    
+    @IBOutlet weak var label_total_cal: UILabel!
+    
+    @IBAction func btn_top(_ sender: Any) {
+    }
+    
+    @IBAction func btn_plan(_ sender: Any) {
+    }
+    
+    @IBAction func btn_day(_ sender: Any) {
+    }
+    
+    @IBAction func btn_food(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
 }

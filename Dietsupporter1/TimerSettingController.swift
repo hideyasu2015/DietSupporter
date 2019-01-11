@@ -12,4 +12,23 @@ class TimerSettingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func textlabel_name(_ sender: Any) {
+    }
+    
+    @IBAction func textLabel_exerciseTime(_ sender: Any) {
+    }
+    
+    @IBAction func textField_breakTime(_ sender: Any) {
+    }
+    
+    @IBAction func textField_set(_ sender: Any) {
+    }
+    
+    @IBAction func btn_registration(_ sender: Any) {
+    }
+    
+    
+    
+    
 }
