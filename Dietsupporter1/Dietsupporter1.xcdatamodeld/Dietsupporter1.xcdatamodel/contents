@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyFoods" representedClassName="DailyFoods" syncable="YES" codeGenerationType="class">
+        <attribute name="food" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Days" representedClassName="Days" syncable="YES" codeGenerationType="class">
+        <attribute name="day" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="foods" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Foods" representedClassName="Foods" syncable="YES" codeGenerationType="class">
         <attribute name="calory" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="carbo" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -29,8 +38,10 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="plans" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Foods" positionX="185.91796875" positionY="-16.86328125" width="128" height="180"/>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="Plans" positionX="155.95703125" positionY="224.00390625" width="128" height="120"/>
-        <element name="Foods" positionX="185.91796875" positionY="-16.86328125" width="128" height="180"/>
+        <element name="DailyFoods" positionX="63" positionY="153" width="128" height="75"/>
+        <element name="Days" positionX="72" positionY="162" width="128" height="90"/>
     </elements>
 </model>

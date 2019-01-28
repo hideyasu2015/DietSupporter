@@ -14,24 +14,22 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
     
     @IBOutlet weak var tableView_plan: UITableView!
     
-    //配列plansを設定
-    let plans = ["リンゴダイエット", "糖質制限ダイエット", "脂質制限ダイエット"]
-    
-    // coredataPlansの中にPlansの内容を全て格納
-    var coredataPlans: Plans?
+    var plans: [Plans]?
+    var plan: Plans?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        // CoreDataを使う際に必須の２文（憶える）
+        super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate!.persistentContainer.viewContext
-        
-        // エラー処理（エラーが起きそうな処理にはdo-catch構文で対応）
+        // エラー処理
         let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
+        
+        
         do{
-            //fetch
-             coredataPlans = try context.fetch(fetchRequest)
+            //fetchした結果は配列
+            try plans = context.fetch(fetchRequest)
         }catch{
             print("fetch error")
         }
@@ -44,7 +42,7 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return plans.count
+        return plans?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,14 +51,18 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
         
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
+        
         // セルに表示する値を設定する
-        cell.textLabel!.text = plans[indexPath.row]
+        cell.textLabel!.text = plans?[indexPath.row].name
         
         return cell
     }
     
     // セルが選択された時に呼ばれる
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        plan = plans?[indexPath.row]
+        performSegue(withIdentifier: "toDayList", sender: nil)
     }
     
     @IBAction func unwindToPlanListController(segue: UIStoryboardSegue){
@@ -82,11 +84,11 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
     
 }
     
-    // セルをタップした時にDayListControllerTableViewControllerに遷移させる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toViewController2") {
+        if (segue.identifier == "toDayList") {
             let subView = (segue.destination as? DayListControllerTableViewController)!
-            subView.coredataPlan = self.coredataPlans
+            // 左辺が遷移先
+            subView.plan = self.plan
     }
 }
     

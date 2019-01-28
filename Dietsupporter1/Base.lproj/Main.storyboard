@@ -903,7 +903,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="209"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ccb-F7-5e9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ccb-F7-5e9" userLabel="FoodCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ccb-F7-5e9" id="AFZ-eO-WmB">
@@ -912,6 +912,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EPV-bf-UM0" id="9zn-lH-2PA"/>
+                                    <outlet property="delegate" destination="EPV-bf-UM0" id="yxb-r8-a06"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcf-gn-AGe">
                                 <rect key="frame" x="10" y="283" width="104" height="33"/>
@@ -1391,7 +1395,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pll-JS-g1a">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pll-JS-g1a" userLabel="DayCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pll-JS-g1a" id="1gL-BM-rYX">
@@ -1400,6 +1404,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="K1x-ux-anr" id="ib0-lP-5UP"/>
+                                    <outlet property="delegate" destination="K1x-ux-anr" id="tSG-jg-JNr"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qQ-Uf-gFZ">
                                 <rect key="frame" x="10" y="448" width="129" height="33"/>
@@ -1455,6 +1463,7 @@
                     <connections>
                         <outlet property="label_total_cal" destination="Mgo-sV-Q97" id="5EC-fH-Boc"/>
                         <outlet property="tableView_day" destination="e15-iT-3TY" id="FAT-gA-jtn"/>
+                        <segue destination="EPV-bf-UM0" kind="presentation" identifier="toFoodList" id="975-vL-9Pp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlB-wk-GXd" userLabel="First Responder" sceneMemberID="firstResponder"/>

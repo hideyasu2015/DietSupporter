@@ -10,16 +10,65 @@ import Foundation
 import UIKit
 import CoreData
 
-class DayListControllerTableViewController: UIViewController {
+class DayListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // PlanListControllerからの画面遷移時にデータを持ってくる
-    var coredataPlan: Plans?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var plan: Plans?
     
     @IBOutlet weak var tableView_day: UITableView!
+    
+    //配列daysを設定
+    let days = ["1日目", "2日目", "3日目"]
+    
+    var coredataPlans: [Plans]?
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate!.persistentContainer.viewContext
+        // エラー処理
+        let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
+        
+        
+        do{
+            //fetchした結果は配列
+            try coredataPlans = context.fetch(fetchRequest)
+        }catch{
+            print("fetch error")
+        }
+        tableView_day.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coredataPlans?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得する
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
+        
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
+        
+        // セルに表示する値を設定する
+        cell.textLabel!.text = days[indexPath.row]
+        
+        return cell
+    }
+    
+    // セルが選択された時に呼ばれる
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        
+    }
+    
     
     @IBAction func unwindToDayListController(segue: UIStoryboardSegue){
     }
@@ -44,7 +93,12 @@ class DayListControllerTableViewController: UIViewController {
     @IBAction func btn_food(_ sender: Any) {
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toFoodList") {
+            let subView = (segue.destination as? FoodListControllerTableViewController)!
+            subView.coredataPlan = self.coredataPlans
+        }
+    }
     
     
     

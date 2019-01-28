@@ -8,16 +8,70 @@
 
 import Foundation
 import UIKit
-class FoodListControllerTableViewController: UIViewController {
+import CoreData
+class FoodListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    // DayListControllerからの画面遷移時にデータを持ってくる
+    var coredataPlan: Plans?
+    
+    var days: Days?
+    
+    @IBOutlet weak var tableView_food: UITableView!
+    
+    //配列foodsを設定
+    let foods = ["リンゴ", "ヨーグルト", "いちご"]
+    
+    var coredataFoods: [Foods]?
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate!.persistentContainer.viewContext
+        // エラー処理
+        let fetchRequest = NSFetchRequest<Foods>(entityName: "Foods")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
+        
+        
+        do{
+            //fetchした結果は配列
+            try coredataFoods = context.fetch(fetchRequest)
+        }catch{
+            print("fetch error")
+        }
+        tableView_food.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coredataFoods?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得する
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "FoodCell", for: indexPath)
+        
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
+        
+        // セルに表示する値を設定する
+        cell.textLabel!.text = foods[indexPath.row]
+        
+        return cell
+    }
+    
+    // セルが選択された時に呼ばれる
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        
     }
     
     @IBAction func unwindToFoodListController(segue: UIStoryboardSegue){
     }
-    
-    @IBOutlet weak var tableView_food: UITableView!
     
     @IBAction func btn_edit(_ sender: Any) {
     }
