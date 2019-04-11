@@ -17,10 +17,8 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     
     @IBOutlet weak var tableView_day: UITableView!
     
-    //配列daysを設定
-    let days = ["1日目", "2日目", "3日目"]
-    
-    var coredataPlans: [Plans]?
+    var days: [Days]?
+    var day: Days?
     
     override func viewDidLoad() {
         
@@ -28,13 +26,12 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate!.persistentContainer.viewContext
         // エラー処理
-        let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
+        let fetchRequest = NSFetchRequest<Days>(entityName: "Days")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
-        
         
         do{
             //fetchした結果は配列
-            try coredataPlans = context.fetch(fetchRequest)
+            try days = context.fetch(fetchRequest)
         }catch{
             print("fetch error")
         }
@@ -47,7 +44,7 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coredataPlans?.count ?? 0
+        return days?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +55,8 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
         
         
         // セルに表示する値を設定する
-        cell.textLabel!.text = days[indexPath.row]
+        let nilCheckDay = days?[indexPath.row].day ?? Int64(indexPath.row)
+        cell.textLabel!.text = String(nilCheckDay)
         
         return cell
     }
@@ -66,9 +64,9 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     // セルが選択された時に呼ばれる
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
-        
+        day = days?[indexPath.row]
+        performSegue(withIdentifier: "toDayList", sender: nil)
     }
-    
     
     @IBAction func unwindToDayListController(segue: UIStoryboardSegue){
     }
@@ -96,7 +94,7 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toFoodList") {
             let subView = (segue.destination as? FoodListControllerTableViewController)!
-            subView.coredataPlan = self.coredataPlans
+            subView.day = self.day
         }
     }
     

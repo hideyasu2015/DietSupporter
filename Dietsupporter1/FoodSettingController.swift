@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 class FoodSettingController: UIViewController {
+    
+    // DayListControllerからの画面遷移時にデータを持ってくる
+    var dailyFood: DailyFoods?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

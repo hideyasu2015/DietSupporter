@@ -459,9 +459,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textField_name:" destination="LRi-tU-7Ok" eventType="editingDidEnd" id="MpT-U8-MR1"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ダイエット期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt5-F6-xLC">
                                 <rect key="frame" x="38" y="286" width="122" height="21"/>
@@ -477,9 +474,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textField_dietPeriod:" destination="LRi-tU-7Ok" eventType="editingDidEnd" id="I2T-go-mbM"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld7-FX-U8z">
                                 <rect key="frame" x="137.5" y="368.5" width="100" height="50"/>
@@ -525,6 +519,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1F7-2w-4pz"/>
                     </view>
+                    <connections>
+                        <outlet property="planDays" destination="uIO-qE-2Cv" id="lfi-hk-eo8"/>
+                        <outlet property="planName" destination="V47-Qa-imI" id="HlE-K4-ebO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fds-PR-4AU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Khl-uL-JgD" userLabel="Exit" sceneMemberID="exit"/>
@@ -1076,6 +1074,7 @@
                         <outlet property="label_protain" destination="U0R-Ra-b0R" id="6Yj-US-966"/>
                         <outlet property="label_total_cal" destination="raB-Um-7vI" id="CkJ-YN-HP0"/>
                         <outlet property="tableView_food" destination="PAy-pE-fcr" id="8dR-ok-T3Z"/>
+                        <segue destination="5xk-xS-4f6" kind="presentation" identifier="toFoodSetting" id="X6k-Ii-Cg1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Un0-tf-9wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1472,4 +1471,7 @@
             <point key="canvasLocation" x="1576.8" y="130.88455772113943"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="X6k-Ii-Cg1"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,16 +12,13 @@ import CoreData
 class FoodListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // DayListControllerからの画面遷移時にデータを持ってくる
-    var coredataPlan: Plans?
-    
-    var days: Days?
+    var day: Days?
     
     @IBOutlet weak var tableView_food: UITableView!
     
-    //配列foodsを設定
-    let foods = ["リンゴ", "ヨーグルト", "いちご"]
+    var dailyFoods: [DailyFoods]?
+    var dailyFood: DailyFoods?
     
-    var coredataFoods: [Foods]?
     
     override func viewDidLoad() {
         
@@ -29,13 +26,13 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate!.persistentContainer.viewContext
         // エラー処理
-        let fetchRequest = NSFetchRequest<Foods>(entityName: "Foods")
+        let fetchRequest = NSFetchRequest<DailyFoods>(entityName: "DailyFoods")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
         
         
         do{
             //fetchした結果は配列
-            try coredataFoods = context.fetch(fetchRequest)
+            try dailyFoods = context.fetch(fetchRequest)
         }catch{
             print("fetch error")
         }
@@ -48,7 +45,7 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coredataFoods?.count ?? 0
+        return dailyFoods?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +56,8 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
         
         
         // セルに表示する値を設定する
-        cell.textLabel!.text = foods[indexPath.row]
+        let nilCheckDailyFood = dailyFoods?[indexPath.row].food ?? Int64(indexPath.row)
+        cell.textLabel!.text = String(nilCheckDailyFood)
         
         return cell
     }
@@ -67,7 +65,8 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     // セルが選択された時に呼ばれる
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
-        
+        dailyFood = dailyFoods?[indexPath.row]
+        performSegue(withIdentifier: "toFoodSetting", sender: nil)
     }
     
     @IBAction func unwindToFoodListController(segue: UIStoryboardSegue){
@@ -101,8 +100,11 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     @IBAction func btn_food(_ sender: Any) {
     }
     
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toFoodSetting") {
+            let subView = (segue.destination as? FoodListControllerTableViewController)!
+            subView.dailyFood = self.dailyFood
+        }
+    }
     
 }

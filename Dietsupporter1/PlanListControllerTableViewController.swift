@@ -20,6 +20,10 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+            }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate!.persistentContainer.viewContext
         // エラー処理
@@ -34,6 +38,7 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
             print("fetch error")
         }
         tableView_plan.reloadData()
+
     }
     
     override func didReceiveMemoryWarning() {
