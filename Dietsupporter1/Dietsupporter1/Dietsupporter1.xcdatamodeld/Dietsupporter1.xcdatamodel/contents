@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyFoods" representedClassName="DailyFoods" syncable="YES" codeGenerationType="class">
+        <attribute name="food" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="days_re" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Days" inverseName="dailyFoods" inverseEntity="Days" syncable="YES"/>
+        <relationship name="foods" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Foods" inverseName="dailyFoods" inverseEntity="Foods" syncable="YES"/>
+    </entity>
+    <entity name="Days" representedClassName="Days" syncable="YES" codeGenerationType="class">
+        <attribute name="day" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="foods" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dailyFoods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DailyFoods" inverseName="days_re" inverseEntity="DailyFoods" syncable="YES"/>
+        <relationship name="plans" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plans" inverseName="days_re" inverseEntity="Plans" syncable="YES"/>
+    </entity>
+    <entity name="Foods" representedClassName="Foods" syncable="YES" codeGenerationType="class">
+        <attribute name="calory" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="carbo" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fat" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="intake" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="per_g" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="protein" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dailyFoods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DailyFoods" inverseName="foods" inverseEntity="DailyFoods" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES" codeGenerationType="class">
+        <attribute name="activity_level" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="plans" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Plans" inverseName="person" inverseEntity="Plans" syncable="YES"/>
+    </entity>
+    <entity name="Plans" representedClassName="Plans" syncable="YES" codeGenerationType="class">
+        <attribute name="days" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="days_re" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Days" inverseName="plans" inverseEntity="Days" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="plans" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DailyFoods" positionX="156.40625" positionY="-80.8359375" width="128" height="103"/>
+        <element name="Days" positionX="-20.46484375" positionY="-81.53125" width="128" height="118"/>
+        <element name="Foods" positionX="154.3046875" positionY="127.2734375" width="128" height="178"/>
+        <element name="Person" positionX="-414.5546875" positionY="-92.26171875" width="128" height="148"/>
+        <element name="Plans" positionX="-203.23046875" positionY="-82.50390625" width="128" height="133"/>
+    </elements>
+</model>
