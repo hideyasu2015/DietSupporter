@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import CoreData
+
 class TimerListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBAction func unwindToTimerListController(segue: UIStoryboardSegue){
@@ -15,12 +17,28 @@ class TimerListControllerTableViewController: UIViewController, UITableViewDeleg
     
     @IBOutlet weak var tableView_timer: UITableView!
     
-    //配列timesを設定
-    let times = ["タバタトレーニング", "ストレッチ", "サーキットトレーニング"]
+    var timers: [Timers]?
+    var timer: Timers?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate!.persistentContainer.viewContext
+        // エラー処理
+        let fetchRequest = NSFetchRequest<Timers>(entityName: "Timers")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id" , ascending: true)]
+        
+        do{
+            //fetchした結果は配列
+            try timers = context.fetch(fetchRequest)
+        }catch{
+            print("fetch error")
+        }
+        tableView_timer.reloadData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,17 +47,26 @@ class TimerListControllerTableViewController: UIViewController, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return times.count
+        return timers?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得する
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath)
         
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
         // セルに表示する値を設定する
-        cell.textLabel!.text = times[indexPath.row]
+        cell.textLabel!.text = timers?[indexPath.row].name
         
         return cell
+    }
+    
+    // セルが選択された時に呼ばれる
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        timer = timers?[indexPath.row]
+        performSegue(withIdentifier: "toTimer", sender: nil)
     }
     
     @IBAction func btn_edit(_ sender: Any) {

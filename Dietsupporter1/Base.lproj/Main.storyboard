@@ -281,7 +281,7 @@
                                 <state key="normal" title="＋タイマーを追加"/>
                                 <connections>
                                     <action selector="btn_add_timer:" destination="QYL-WH-jCc" eventType="touchUpInside" id="UnP-CC-Ona"/>
-                                    <segue destination="fxv-D4-J7V" kind="show" id="RxM-f5-dVJ"/>
+                                    <segue destination="fxv-D4-J7V" kind="show" identifier="" id="RxM-f5-dVJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -301,6 +301,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView_timer" destination="W6W-Aw-89V" id="hDB-dg-uXr"/>
+                        <segue destination="IS1-Vc-2K6" kind="presentation" identifier="toTimer" id="5V1-1s-LJ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1P-cJ-aQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
