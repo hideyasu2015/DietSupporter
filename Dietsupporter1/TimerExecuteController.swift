@@ -127,6 +127,20 @@ class TimerExecuteController: UIViewController {
         count = 0
         // タイマーの表示を更新する
         _ = displayUpdate()
+        
+        //let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        //let context = appDelegate!.persistentContainer.viewContext
+        //let fetchRequest = NSFetchRequest<Timers>(entityName: "Timers")
+        
+        //let fetchSort = NSSortDescriptor(key: "name", ascending: true)
+        //fetchRequest.sortDescriptors = [fetchSort]
+        
+        //do {
+            //timers = try context.fetch(fetchRequest)
+        //} catch {
+            //print(error)
+        //}
+        
     }
     
 }

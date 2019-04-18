@@ -75,9 +75,10 @@ class TimerListControllerTableViewController: UIViewController, UITableViewDeleg
     @IBAction func btn_add_timer(_ sender: Any) {
     }
     
-    
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTimer" {
+            let subview = (segue.destination as? TimerExecuteController)!
+            subview.timers = self.timers
+        }
+    }
 }

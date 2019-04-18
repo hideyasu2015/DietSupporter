@@ -1467,6 +1467,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="5V1-1s-LJ1"/>
         <segue reference="X6k-Ii-Cg1"/>
         <segue reference="M95-Kj-L6a"/>
     </inferredMetricsTieBreakers>
