@@ -326,7 +326,8 @@
                                     <navigationItem title="○○○" id="0rZ-Vq-ci2">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="4Ng-kM-Hp4">
                                             <connections>
-                                                <segue destination="rzk-XL-jX0" kind="unwind" unwindAction="unwindToTimerListControllerWithSegue:" id="Xxa-D8-hE0"/>
+                                                <action selector="btn_back:" destination="IS1-Vc-2K6" id="0yV-0L-qxD"/>
+                                                <segue destination="QYL-WH-jCc" kind="show" identifier="backTimerList" id="M95-Kj-L6a"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -413,7 +414,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfa-E0-Erd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rzk-XL-jX0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-647" y="887"/>
         </scene>
@@ -1468,5 +1468,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="X6k-Ii-Cg1"/>
+        <segue reference="M95-Kj-L6a"/>
     </inferredMetricsTieBreakers>
 </document>
