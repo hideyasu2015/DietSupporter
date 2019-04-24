@@ -12,6 +12,7 @@ import CoreData
 class FoodListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // DayListControllerからの画面遷移時にデータを持ってくる
+    var day_int: Int64?
     var day: Days?
     
     @IBOutlet weak var tableView_food: UITableView!
@@ -23,6 +24,10 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     override func viewDidLoad() {
         
         super.viewDidLoad()
+     
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let context = appDelegate!.persistentContainer.viewContext
         // エラー処理
@@ -45,7 +50,9 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dailyFoods?.count ?? 0
+        //change
+        return unsafeDowncast<T, Int>( day_int, Int)
+//        return dailyFoods?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

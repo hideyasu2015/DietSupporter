@@ -32,6 +32,8 @@ class PlanSettingController: UIViewController {
         }catch{
             print(error)
         }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     class func dateFromString(string: String, format: String) -> Date{
