@@ -12,12 +12,14 @@ import CoreData
 
 class DayListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+
     // PlanListControllerからの画面遷移時にデータを持ってくる
     var plan: Plans?
     
+    
     @IBOutlet weak var tableView_day: UITableView!
     //change
-    var plans: [Plans] = [Plans]()
+    var planlists: [PlanList] = [PlanList]()
     
     //    var days: [Days]?
 //    var day: Days?
@@ -25,51 +27,76 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+         tableView_day.register(UINib(nibName: "DayListCell", bundle: nil), forCellReuseIdentifier: "DayCell")
   
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        let context = appDelegate!.persistentContainer.viewContext
-        // エラー処理
-        let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "days" , ascending: true)]
-        
-        do{
-            //fetchした結果は配列
-             plans = try context.fetch(fetchRequest)
-        }catch{
-            print("fetch error")
-        }
+
+        //2019.4 コメント　fetchしない。前画面からの日数を表示する
+//        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//        let context = appDelegate!.persistentContainer.viewContext
+//        // エラー処理
+//        let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "days" , ascending: true)]
+//
+//        do{
+//            //fetchした結果は配列
+//             plans = try context.fetch(fetchRequest)
+//        }catch{
+//            print("fetch error")
+//        }
         tableView_day.reloadData()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    
+        for num  in 0...Int(truncatingIfNeeded: plan!.days ) {
+            //カレンダclass 調査 加算　減産
+            let planlist = PlanList(days: num, date: plan!.start_date!)
+            
+            planlists.append(planlist)
+            
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //tokuhara change
-        return plans.count
-//        return days?.count ?? 0
+        
+        //2019.4
+        return planlists.count
+//        return Int(truncatingIfNeeded: plan!.days )
+        //        return days?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得する
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        let cell: DayListCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayListCell
         
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja_JP")
+        let date = planlists[indexPath.row].date
         // セルに表示する値を設定する
-        cell.textLabel!.text = String(plans[indexPath.row].days)
+        cell.count.text = String(planlists[indexPath.row].days)
+        cell.dayLabel.text = formatter.string(from: date)
+        
+        
         return cell
     }
     
     // セルが選択された時に呼ばれる
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
-        plan = plans[indexPath.row]
+//        plan = plan[indexPath.row]
         performSegue(withIdentifier: "toDayList", sender: nil)
     }
     
@@ -107,4 +134,14 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     
     
     
+}
+
+struct PlanList{
+    let days:Int
+    let date:Date
+    
+    init(days:Int ,date:Date){
+        self.days = days
+        self.date = date
+    }
 }

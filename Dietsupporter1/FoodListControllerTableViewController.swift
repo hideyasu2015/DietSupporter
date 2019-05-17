@@ -51,8 +51,8 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //change
-        return unsafeDowncast<T, Int>( day_int, Int)
-//        return dailyFoods?.count ?? 0
+        
+        return dailyFoods?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

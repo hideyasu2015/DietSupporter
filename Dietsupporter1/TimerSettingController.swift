@@ -38,6 +38,8 @@ class TimerSettingController: UIViewController {
         }catch{
             print(error)
         }
+        performSegue(withIdentifier: "backToTimerList", sender: nil)
+        
     }
     
     class func dateFromString(string: String, format: String) -> Date{

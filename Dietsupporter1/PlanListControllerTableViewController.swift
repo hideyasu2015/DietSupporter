@@ -20,6 +20,9 @@ class PlanListControllerTableViewController: UIViewController, UITableViewDelega
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView_plan.delegate = self
+        tableView_plan.dataSource = self
+        self.tableView_plan.register(DayListCell.self, forCellReuseIdentifier: "PlanCell")
         
             }
     

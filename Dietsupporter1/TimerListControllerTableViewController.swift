@@ -78,7 +78,7 @@ class TimerListControllerTableViewController: UIViewController, UITableViewDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTimer" {
             let subview = (segue.destination as? TimerExecuteController)!
-            subview.timers = self.timers
+            subview.myTimer = self.timer
         }
     }
 }

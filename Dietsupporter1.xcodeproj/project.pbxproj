@@ -22,6 +22,9 @@
 		03FDB67821D3789D00369F25 /* Dietsupporter1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03FDB67621D3789D00369F25 /* Dietsupporter1.xcdatamodeld */; };
 		03FDB67A21D3789D00369F25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FDB67921D3789D00369F25 /* Assets.xcassets */; };
 		03FDB67D21D3789D00369F25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FDB67B21D3789D00369F25 /* LaunchScreen.storyboard */; };
+		E453D27A2280379000C9FD54 /* zero.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E453D2792280379000C9FD54 /* zero.mp3 */; };
+		E453D27D22804AF800C9FD54 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453D27B22804AF800C9FD54 /* DayListCell.swift */; };
+		E453D27E22804AF800C9FD54 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E453D27C22804AF800C9FD54 /* DayListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		03FDB67921D3789D00369F25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03FDB67C21D3789D00369F25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03FDB67E21D3789D00369F25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E453D2792280379000C9FD54 /* zero.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zero.mp3; sourceTree = "<group>"; };
+		E453D27B22804AF800C9FD54 /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
+		E453D27C22804AF800C9FD54 /* DayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 		03FDB66E21D3789D00369F25 /* Dietsupporter1 */ = {
 			isa = PBXGroup;
 			children = (
+				E453D27C22804AF800C9FD54 /* DayListCell.xib */,
+				E453D27B22804AF800C9FD54 /* DayListCell.swift */,
+				E453D2792280379000C9FD54 /* zero.mp3 */,
 				03FDB66F21D3789D00369F25 /* AppDelegate.swift */,
 				03FDB67321D3789D00369F25 /* Main.storyboard */,
 				03FDB67121D3789D00369F25 /* ViewController.swift */,
@@ -154,7 +163,9 @@
 			files = (
 				03FDB67D21D3789D00369F25 /* LaunchScreen.storyboard in Resources */,
 				03FDB67A21D3789D00369F25 /* Assets.xcassets in Resources */,
+				E453D27A2280379000C9FD54 /* zero.mp3 in Resources */,
 				03FDB67521D3789D00369F25 /* Main.storyboard in Resources */,
+				E453D27E22804AF800C9FD54 /* DayListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +183,7 @@
 				0305784721E6E1CB0041E2F3 /* PlanSettingController.swift in Sources */,
 				0305784D21E6E4D50041E2F3 /* TimerListControllerTableViewController.swift in Sources */,
 				0305784921E6E34A0041E2F3 /* FoodListControllerTableViewController.swift in Sources */,
+				E453D27D22804AF800C9FD54 /* DayListCell.swift in Sources */,
 				03FDB67221D3789D00369F25 /* ViewController.swift in Sources */,
 				03FAAEBA21E0E82900A0C0DC /* DayListControllerTableViewController.swift in Sources */,
 				03FDB67021D3789D00369F25 /* AppDelegate.swift in Sources */,
@@ -323,7 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88FL693R99;
+				DEVELOPMENT_TEAM = 3SJLX4E26L;
 				INFOPLIST_FILE = Dietsupporter1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -341,7 +353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88FL693R99;
+				DEVELOPMENT_TEAM = 3SJLX4E26L;
 				INFOPLIST_FILE = Dietsupporter1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

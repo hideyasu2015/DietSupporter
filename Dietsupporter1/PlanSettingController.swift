@@ -25,8 +25,20 @@ class PlanSettingController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         
         let plan = Plans(context: context)
-        plan.days = Int64(planDays!.text!) ?? 0
+
+        //??小テーブルを20個作る
+        let num:Int! = Int(planDays!.text!)
+//        var childTable = [Int64: String]()
+        for _ in 0...num{
+            let day = Days(context: context)
+            plan.days_re?.adding(day)
+        }
+       
+        
         plan.name = planName.text
+        //開始日付を取得して保存
+        let date = Date()
+        plan.start_date = date
         do {
             try context.save()
         }catch{

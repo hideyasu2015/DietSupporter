@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 import CoreData
+import AVFoundation
 
-class TimerExecuteController: UIViewController {
-
-    var timers: [Timers]?
+class TimerExecuteController: UIViewController,AVAudioPlayerDelegate {
+//2019.5.6 add
+    var myTimer: Timers?
+    var setCount: Int?
     
     // タイマーの変数を制作
     var timer : Timer?
@@ -20,6 +22,12 @@ class TimerExecuteController: UIViewController {
     var count = 0
     // 設定値を扱うキーを設定
     let settingKey = "Timer Value"
+    
+    //2019.5.6 add 音を鳴らす
+    let zeroPath = Bundle.main.bundleURL.appendingPathComponent("zero.mp3")
+    var zeroPlayer: AVAudioPlayer!
+    
+    @IBOutlet weak var topTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +38,22 @@ class TimerExecuteController: UIViewController {
         
         // UserDefaultsに初期値を登録
         settings.register(defaults: [settingKey:10])
+        
+      
+      
+        
+    }
+    //add 2019.5.6
+    override func viewWillAppear(_ animated: Bool) {
+        topTitle.title = myTimer?.name
+        textLabel_set.text = String(myTimer!.set_count)
+        setCount = Int(myTimer!.set_count)
+        //use coredata
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        
+        
     }
     
     @IBOutlet weak var textLabel_time: UILabel!
@@ -88,9 +112,12 @@ class TimerExecuteController: UIViewController {
     func displayUpdate() -> Int {
         
         // UserDefaultsのインスタンスを生成
-        let settings = UserDefaults.standard
+//        let settings = UserDefaults.standard
         // 取得した秒数をtimerValueに渡す
-        let timerValue = settings.integer(forKey: settingKey)
+//        let timerValue = settings.integer(forKey: settingKey)
+  
+        //2019.5.6 add
+        let timerValue = Int(myTimer!.exercise_time)
         //残り時間(remainCount)を生成
         let remainCount = timerValue - count
         //remainCount（残りの時間）をラベルに表示
@@ -110,6 +137,15 @@ class TimerExecuteController: UIViewController {
             // タイマー停止
             timer.invalidate()
             
+            //2019.5.6 add 音を鳴らす
+            do{
+                let zeroPlayer = try AVAudioPlayer(contentsOf: zeroPath, fileTypeHint: nil)
+                zeroPlayer.delegate = self
+                zeroPlayer.play()
+            }catch{
+                print(error)
+            }
+            
             // カスタマイズ編：ダイアログを作成
             let alertController = UIAlertController(title: "終了", message: "お疲れ様でした", preferredStyle: .alert)
             // ダイアログに表示させるOKボタンを作成
@@ -118,6 +154,9 @@ class TimerExecuteController: UIViewController {
             alertController.addAction(defaultAction)
             // ダイアログの表示
             present(alertController, animated: true, completion: nil)
+            // add 2019.5.6
+            setCount! -= 1
+            textLabel_set.text = String(setCount!)
         }
     }
     
