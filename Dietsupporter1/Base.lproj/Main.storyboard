@@ -900,7 +900,6 @@
                                 <state key="normal" title="＋食品を追加"/>
                                 <connections>
                                     <action selector="btn_add_food:" destination="EPV-bf-UM0" eventType="touchUpInside" id="CS8-AH-R9K"/>
-                                    <segue destination="5xk-xS-4f6" kind="show" id="A4E-GD-vNa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたのこの日摂取したカロリーとPFCは" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kix-Ut-rG5">
@@ -1059,7 +1058,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Un0-tf-9wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="T6M-v4-eDy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2332" y="130.88455772113943"/>
+            <point key="canvasLocation" x="2321" y="131"/>
         </scene>
         <!--Food Setting Controller-->
         <scene sceneID="yeD-Qp-Ozs">
@@ -1308,7 +1307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BR0-83-AxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ywR-RX-ZW7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2336.8000000000002" y="821.73913043478262"/>
+            <point key="canvasLocation" x="2321" y="932"/>
         </scene>
         <!--Day List Controller Table View Controller-->
         <scene sceneID="Pjy-xF-hPy">
@@ -1437,11 +1436,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlB-wk-GXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8nb-lm-7Va" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1581.5999999999999" y="130.88455772113943"/>
+            <point key="canvasLocation" x="1601" y="131"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="X6k-Ii-Cg1"/>
-        <segue reference="M95-Kj-L6a"/>
+        <segue reference="Etu-f7-Ez4"/>
     </inferredMetricsTieBreakers>
 </document>

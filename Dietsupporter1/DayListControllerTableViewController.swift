@@ -21,8 +21,9 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     //change
     var planlists: [PlanList] = [PlanList]()
     
-    //    var days: [Days]?
-//    var day: Days?
+    var days: [Days]?
+
+    //    var day: Days?
     
     override func viewDidLoad() {
         
@@ -34,16 +35,17 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
 
-        //2019.4 コメント　fetchしない。前画面からの日数を表示する
+
 //        let appDelegate = UIApplication.shared.delegate as? AppDelegate
 //        let context = appDelegate!.persistentContainer.viewContext
 //        // エラー処理
-//        let fetchRequest = NSFetchRequest<Plans>(entityName: "Plans")
+//        let fetchRequest = NSFetchRequest<Days>(entityName: "Days")
+//        fetchRequest.predicate = NSPredicate(format: "title == %@", plan?.name)
 //        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "days" , ascending: true)]
 //
 //        do{
 //            //fetchした結果は配列
-//             plans = try context.fetch(fetchRequest)
+//             plan = try context.fetch(fetchRequest)
 //        }catch{
 //            print("fetch error")
 //        }
@@ -53,14 +55,14 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         
-    
-        for num  in 0...Int(truncatingIfNeeded: plan!.days ) {
-            //カレンダclass 調査 加算　減産
-            let planlist = PlanList(days: num, date: plan!.start_date!)
-            
-            planlists.append(planlist)
-            
-        }
+//
+//        for num  in 0...Int(truncatingIfNeeded: plan!.days_re. ) {
+//            //カレンダclass 調査 加算　減産
+//            let planlist = PlanList(days: num, date: plan!.start_date!)
+//
+//            planlists.append(planlist)
+        
+//        }
         
     }
     
@@ -72,8 +74,8 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //2019.4
-        return planlists.count
-//        return Int(truncatingIfNeeded: plan!.days )
+        return plan?.days_re?.count ?? 0
+        //        return Int(truncatingIfNeeded: plan!.days )
         //        return days?.count ?? 0
     }
     
@@ -84,10 +86,12 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ja_JP")
-        let date = planlists[indexPath.row].date
+        
         // セルに表示する値を設定する
-        cell.count.text = String(planlists[indexPath.row].days)
-        cell.dayLabel.text = formatter.string(from: date)
+        let show_days = plan?.days_re?.allObjects as! [Days]
+        let date = show_days[indexPath.row].day
+        cell.count.text = String(show_days[indexPath.row].day)
+//        cell.dayLabel.text = String(from: date)
         
         
         return cell

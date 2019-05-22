@@ -26,12 +26,12 @@ class PlanSettingController: UIViewController {
         
         let plan = Plans(context: context)
 
-        //??小テーブルを20個作る
+        //小テーブルを20個作る
         let num:Int! = Int(planDays!.text!)
-//        var childTable = [Int64: String]()
+//nssetにnsmutableは詰め込めない
         for _ in 0...num{
             let day = Days(context: context)
-            plan.days_re?.adding(day)
+            plan.days_re = plan.days_re?.adding(day) as NSSet?
         }
        
         

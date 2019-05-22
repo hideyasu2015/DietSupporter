@@ -83,6 +83,7 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
     }
     
     @IBAction func btn_add_food(_ sender: Any) {
+        performSegue(withIdentifier: "toFoodSetting", sender: nil)
     }
     
     @IBOutlet weak var label_cal: UILabel!
