@@ -23,18 +23,17 @@ class PlanSettingController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
+//persistentContainerでインスタンス生成する事
         let plan = Plans(context: context)
-
-        //小テーブルを20個作る
+        //小テーブルを入力値分作る
         let num:Int! = Int(planDays!.text!)
-//nssetにnsmutableは詰め込めない
-        for _ in 0...num{
+
+        for i in 0...num{
             let day = Days(context: context)
+            day.day = Int64(i)
+            //nssetにnsmutableは詰め込めない
             plan.days_re = plan.days_re?.adding(day) as NSSet?
         }
-       
-        
         plan.name = planName.text
         //開始日付を取得して保存
         let date = Date()
@@ -44,7 +43,6 @@ class PlanSettingController: UIViewController {
         }catch{
             print(error)
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
