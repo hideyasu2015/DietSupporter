@@ -7,14 +7,20 @@
 //
 
 import UIKit
+protocol UseSegueDelegate {
+    func moveView(_ index: IndexPath)
+}
 
 class DayListCell: UITableViewCell {
-
+    
+    var index:IndexPath?
+    var delegate:UseSegueDelegate?
+    
     @IBOutlet weak var count: UILabel!
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBAction func btn_NextPage(_ sender: Any) {
-    
+            delegate?.moveView(index!)
     }
     
     

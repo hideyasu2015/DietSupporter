@@ -10,9 +10,17 @@ import Foundation
 import UIKit
 import CoreData
 
-class DayListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class DayListControllerTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UseSegueDelegate{
     
-
+    func moveView(_ index: IndexPath) {
+        //self.index= 21行目
+        self.index = index
+        performSegue(withIdentifier: "toFoodList", sender: nil)
+    }
+    
+    //delegate
+    var index:IndexPath?
+    
     // PlanListControllerからの画面遷移時にデータを持ってくる
     var plan: Plans?
     //日付表示用
@@ -71,15 +79,17 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
         //datecomponents でday を指定しているのでその分増えていく 1-足す時間 2-開始時間
         let showDay = Calendar.current.date(byAdding: dateComponents, to: plan!.start_date!)
         cell.dayLabel.text = formatter.string(from: showDay!)
-        
+        //このコントロラーを渡す
+        cell.delegate = self
+        cell.index = indexPath
         return cell
     }
     
     // セルが選択された時に呼ばれる
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
-//        plan = plan[indexPath.row]
-        performSegue(withIdentifier: "toDayList", sender: nil)
+
+   
     }
     
     @IBAction func unwindToDayListController(segue: UIStoryboardSegue){
@@ -110,6 +120,7 @@ class DayListControllerTableViewController: UIViewController, UITableViewDelegat
             let subView = (segue.destination as? FoodListControllerTableViewController)!
             // modify
             subView.day_int = self.plan?.days
+            subView.day = self.planDays![index!.row]
         }
     }
     

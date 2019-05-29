@@ -61,11 +61,11 @@ class FoodListControllerTableViewController: UIViewController, UITableViewDelega
         
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
-        
         // セルに表示する値を設定する
         let nilCheckDailyFood = dailyFoods?[indexPath.row].food ?? Int64(indexPath.row)
         cell.textLabel!.text = String(nilCheckDailyFood)
-        
+        //
+       
         return cell
     }
     
